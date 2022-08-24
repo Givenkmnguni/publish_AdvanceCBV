@@ -1,0 +1,28 @@
+{% extends 'AdvanceCBV_App/Base.html' %}
+{% block body_block %}
+
+<div class="jumbotron">
+
+<h1> Welcome to the school Detail Page!!! </h1>
+<h2>School details:</h2>
+<!-- Parsing a school details  -->
+<p>Name:{{school_detail.name}}</p>
+<p>Principal:{{school_detail.principal}}</p>
+<p>Location:{{school_detail.Location}}</p>
+<h3> Students: </h3>
+ <!-- students.all , 'students' is from the model ForeignKey .all means we want to print everything from that table  -->
+{% for student in school_detail.students.all %}
+<p>{{student.Name}} is {{student.age}} years old.</p>
+
+{% endfor %}
+</div>
+
+<div class="container">
+
+  <p> <a class='btn btn-warning' href="{% url 'AdvanceCBV_App:update' pk=school_detail.pk %}"> update </a> </p>
+
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'AdvanceCBV_App/Base.html' %}
+
+{% block body_block %}
+
+<h1>
+  <!-- Cheacking if the instance of the primary key exists or not -->
+  {% if not form.instance.pk %}
+  <!-- if i doesn't exist then i am creating one -->
+  Create School
+  <!-- then if the instance already exist, i am going to update it  -->
+  {% else %}
+  Update School
+  <!-- Closing if statement -->
+  {% endif %}
+</h1>
+
+
+<form method="post">
+<!-- protecting users input 'data' -->
+  {% csrf_token %}
+  <!-- here we're injecting html forms fields -->
+  {{ form.as_p}}
+  <input type="submit" name="" value="submit">
+
+</form>
+
+{% endblock %}
